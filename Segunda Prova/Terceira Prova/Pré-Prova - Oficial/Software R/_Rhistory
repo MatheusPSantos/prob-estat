@@ -1,0 +1,23 @@
+boxplot(cancer$Tempo~cancer$Tratamento,ylab="Tempo de Vida",xlab="Tipo de Tratamento",names=c("1","2"))
+boxplot(cancer$Tempo~cancer$Tratamento,ylab="Tempo de Vida",xlab="Tipo de Tratamento",names=c("1","2"))
+boxplot(cancer$Tempo~cancer$Tratamento,ylab="Tempo de Vida",xlab="Tipo de Tratamento",names=c("1","2"))
+boxplot(cancer$Tempo~cancer$Tratamento,ylab="Tempo de Vida",xlab="Tipo de Tratamento",names=c("1","2"))
+boxplot(cancer$Tempo~cancer$Tratamento,ylab="Tempo de Vida",xlab="Tipo de Tratamento",names=c("1","2"))
+setwd("C:\\Users\\chrys\\Documents\\UTFPR\\3º Semestre\\Probabilidade e Estatística\\Dados"
+source('~/UTFPR/3º Semestre/Probabilidade e Estatística/Exemplos/Pré-Avaliação 2/Probabilidade/projeto.R')
+dados <- read.csv("probabilidade.csv",sep=";",dec=",")
+dados <- read.csv("corn.csv",sep=";",dec=",")
+setwd("C:\\Users\\chrys\\Documents\\UTFPR\\3º Semestre\\Probabilidade e Estatística\Dados\\Prova 2"
+setwd("C:\\Users\\chrys\\OneDrive\\Documentos\\Estatística")
+dados <- read.csv("cancer.csv",sep=";")
+ANOVA <- aov(dados$Tempo~dados$Idade) #Faz a ANOVA
+summary(ANOVA) #Tabela de ANOVA
+summary(ANOVA) #Tabela de ANOVA
+residos <- ANOVA$res #Retorna os resídos do modelo
+qqnorm(residos) #QQ-plot Normal
+qqline(residos,col="red") #Coloca a linha teórica no QQ-plot
+shapiro.test(residos) #Teste de normalidade de Shapiro-Wilk
+cor.test(dados$Tempo, dados$Idade, method="kendall")
+#########################################
+tabela <- table(dados$Grau,dados$Local)
+chisq.test(tabela)

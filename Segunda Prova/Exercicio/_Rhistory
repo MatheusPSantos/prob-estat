@@ -1,0 +1,48 @@
+setwd('home/Documentos/Universidade/3/Probabilidade/Segunda\ Prova');
+dir
+dir()
+dados <-read.csv("probabilidade.csv", sep=";", dec=".");
+dados
+dados <-read.csv("probabilidade.csv", sep=";", dec=",");
+View(dados)
+View(dados)
+View(dados)
+tempo <- probabilidade$Tempo;
+tempo <- dados$Tempo;
+tempo
+temperatura <- dados$Temperatura;
+marca <- dados$Marca;
+marca
+mediaTempo <- mean(tempo)
+mediaTempo
+x <-seq(0, 12000, by=1)
+x
+max.print(x)
+x.maxprint()
+fteorico <- dexp(x, rate =1/ mediaTempo);
+fteorico
+hist(tempo, freq = F, xlab="Tempo de duração (em dias)", ylab="Frequência relativa", main="")
+hist(tempo, freq = F, xlab="Tempo de duração (em dias)", ylab="Frequência relativa", main="")
+lines(x, fteorico, col="blue")
+mediaTemperatura <- mean(temperatura)
+mediaTemperatura
+y <-seq(0,12000, by=1)
+y
+fteoricoTemperatura <- dexp(x, rate = 1/ mediaTemperatura)
+fteoricoTemperatura
+fteorico
+fteoricoTemperatura <- dexp(y, rate = 1/ mediaTemperatura)
+fteoricoTemperatura
+hist(temperatura, freq = F, xlab = "Temperatura (em Cº)", ylab="Frequência relativa", main="")
+lines(y, fteoricoTemperatura, col="blue")
+desvioTempo <- sd(tempo)
+x <-seq(min(tempo), max(tempo), by = 0.1)
+x
+x <-seq(0, 12000, by=1)
+x
+function (...)
+x <-seq(min(tempo), max(tempo), by = 0.1)
+fteorico <- dnorm(x, mean = mediaTempo, sd = desvioTempo)
+hist(tempo, freq = F, xlab="Tempo (em dias)", ylab = "Frequencia relativa", main="")
+lines(x, fteorico, col = "blue")
+qqnorm(tempo)

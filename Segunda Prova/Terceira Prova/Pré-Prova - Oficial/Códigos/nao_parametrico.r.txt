@@ -1,0 +1,47 @@
+#########################################################################################
+# Testes não paramétricos
+#########################################################################################
+setwd("E:\\Programas") #Setar o diretório
+
+dados1 <- read.csv("pareado.csv",sep=";") #Ler dados em .csv
+dados2 <- read.csv("independente.csv",sep=";") #Ler dados em .csv
+dados3 <- read.csv("kruskal.csv",sep=";") #Ler dados em .csv
+
+###########################
+# Teste de Wilcoxon Pareado
+###########################
+boxplot(dados1$Peso~dados1$Intervecao,ylab="Peso das crian�as")
+wilcox.test(dados1$Peso~dados1$Intervecao,paired=T)
+
+#######################################################
+# Teste de Wilcoxon-Mann-Whitney Amostras Independentes
+#######################################################
+boxplot(dados2$Perda~dados2$Dieta,ylab="Perda de peso")
+wilcox.test(dados2$Perda~dados2$Dieta)
+
+#########################
+# Teste de Kruskal Wallis
+#########################
+#install.packages("agricolae")
+library(agricolae)
+
+boxplot(dados3$Resposta~dados3$Grupos,ylab="Altura da Planta (cm)",xlab="Tipo de Adubo")
+
+K.teste <- kruskal(dados3$Resposta,dados3$Grupos)
+K.teste$statistics
+K.teste$groups
+
+####################
+# Teste Qui-quadrado
+####################
+
+dados <- read.csv("dados.csv",sep=";")
+
+tabela <- table(dados$Toxemia,dados$Esteroides)
+
+fr     <- tabela/c(sum(tabela[1,]),sum(tabela[2,]))
+barplot(fr,beside=T,col=c("blue","red"),xlab="Toxemia",xaxt="n")
+legend("topright",fill=c("blue","red"),legend=c("Esteróides (Não)","Esteróides (Sim)"),bty="n")
+axis(1,at=c(2,5),labels=c("Não","Sim"))
+
+chisq.test(tabela)

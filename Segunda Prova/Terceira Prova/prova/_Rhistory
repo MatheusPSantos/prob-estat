@@ -1,0 +1,19 @@
+dados <- read.csv("loxbwt3.csv", sep=";")
+dados <- read.csv("loxbwt3.csv",sep=";")
+dados <- read.csv("lowbwt3.csv",sep=";")
+pesoNormal <- dados[dados$LOW=="0"];  #peso normal da criança
+dados <- read.csv("lowbwt3.csv",sep=";")# setei os dados
+pesoNormal <- dados[dados$LOW=="0"];  #peso normal da criança
+pesoNormal <- dados[dados$LOW=="0",];  #peso normal da criança
+pesoBaixo <- dados[dados$LOW=="1",];   #peso baixo da criança
+dados <- read.csv("lowbwt3.csv",sep=";")
+dados
+pesoMãe <- dados[dados$LWT,];
+pesoMae <- dados[dados$LWT,];
+qqnorm(pesoNormal$pesoMae);
+qqnorm(pesoNormal$LWT) # Verificar se segue a distribui??o normal.
+qqnorm(pesoNormal$LWT) # Verificar se segue a distribui??o normal.
+qqnorm(pesoNormal$LWT)
+qqnorm(pesoNormal$LWT) # Verificar se segue a distribui??o normal.
+qqline(pesoNormal$LWT,col="red")
+shapiro.test(pesoNormal$LWT)

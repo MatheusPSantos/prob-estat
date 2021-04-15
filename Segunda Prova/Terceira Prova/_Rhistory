@@ -1,0 +1,34 @@
+setwd("/Terceira\ Prova/");
+setwd("/Terceira Prova");
+setwd("Terceira Prova");
+dados <- read.csv("dados.csv",sep=";")
+dados <- read.csv("dados.csv",sep=";")
+install.packages("BSDA")
+install.packages("lmtest")
+install.packages("agricolae")
+var.IC <- function(data, conf.level = 0.95)
+{
+df = length(data) - 1
+chilower = qchisq((1 - conf.level)/2, df)
+chiupper = qchisq((1 - conf.level)/2, df, lower.tail = FALSE)
+v = var(data)
+c(df * v/chiupper, df * v/chilower)
+}
+var.TH <- function(data,var0)
+{
+df = length(data) - 1
+v = var(data)
+testchi = df*v/(var0)
+less = pchisq(testchi,df)
+greater = pchisq(testchi,df,lower.tail=F)
+two.sided = 2*min(less,greater)
+print(paste("P-Value: ",round(two.sided,4)),quote=FALSE)
+}
+idade <- dados$IdadeG
+qqnorm(idade)
+qqline(idade,col="red")
+t.test(idade,conf.level=0.95)$conf.int
+library(BSDA)
+z.test(idade,sigma.x=sqrt(7),conf.level=0.95)$conf.int
+var.IC(idade,conf.level=0.95)
+sqrt(var.IC(idade,conf.level=0.95))

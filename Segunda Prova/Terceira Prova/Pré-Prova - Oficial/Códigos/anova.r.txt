@@ -1,0 +1,53 @@
+#########################################################################################
+# Análise de Variância (ANOVA)
+#########################################################################################
+setwd("E:\\Programas") #Setar o diretório
+
+dados <- read.csv("anova.csv",sep=";") # Material (Tipo de Material) / Perfil (Perfil do Material) / Medida (Durabilidade)
+
+#####################
+# Descrição dos dados
+#####################
+
+boxplot(dados$Medida~dados$Perfil) #Boxplot por Perfil de Material
+
+#################
+# Tabela de ANOVA
+#################
+
+ANOVA <- aov(dados$Medida~dados$Perfil) #Faz a ANOVA
+summary(ANOVA) #Tabela de ANOVA
+
+TukeyHSD(ANOVA,conf.level=0.90) #Pós teste de Tukey (Honest Significant Difference)
+
+######################################
+# Verificando Normalidade dos Resídos
+######################################
+residos <- ANOVA$res #Retorna os resídos do modelo
+
+qqnorm(residos) #QQ-plot Normal
+qqline(residos,col="red") #Coloca a linha teórica no QQ-plot
+
+shapiro.test(residos) #Teste de normalidade de Shapiro-Wilk
+
+#############################################
+# Verificando homoscedasticidade dos Resíduos
+#############################################
+preditos <- predict(ANOVA) #Retorna os valores preditos pelo modelo
+
+plot(residos,preditos) #Gráfico dos Resíduos vc Preditos
+
+#install.packages("lmtest")
+library(lmtest) #Carrega a library lmtest
+
+bptest(ANOVA) #Teste de homoscedasticidade de Breusch-Pagan
+gqtest(ANOVA) #Teste de homoscedasticidade de Goldfeld-Quandt
+
+#########################################
+# Verificando independência dos Resíduos
+#########################################
+n <- nrow(dados)
+
+plot(1:n,residos,type="b") #Gráfico da ordem vs residuos
+
+dwtest(ANOVA) #Teste de independência de Durbin-Watson

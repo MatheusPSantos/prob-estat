@@ -1,0 +1,11 @@
+### INFERÊNCIA ###
+#install.packages("BSDA")		
+library(BSDA)
+
+### ANALISE DE REGRESSÃO ### ANALISE DE VARIÂNCIA ###
+#install.packages("lmtest")
+library(lmtest)
+
+### INFERÊNCIA NÃO PARAMÉTRICA (KRUSKAL) ###
+#install.packages("agricolae")
+library(agricolae)
